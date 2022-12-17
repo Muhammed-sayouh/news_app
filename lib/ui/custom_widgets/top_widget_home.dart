@@ -5,6 +5,8 @@ import '../theme/sizes/sizes.dart';
 import '../theme/style/font_style.dart';
 
 class TopWidgetHomeScreen extends StatelessWidget {
+/// news word and white space on top screen
+
   const TopWidgetHomeScreen({
     Key? key,
   }) : super(key: key);

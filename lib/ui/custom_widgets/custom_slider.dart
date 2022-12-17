@@ -6,10 +6,10 @@ import 'package:news_app/ui/theme/sizes/sizes.dart';
 import 'package:news_app/ui/theme/style/colors.dart';
 
 class ImageSlider extends StatefulWidget {
+/// EGYPT news in image slider , just pass list of [articles] 
+
   final List<Article> articles;
-
   const ImageSlider({super.key, required this.articles});
-
   @override
   State<StatefulWidget> createState() {
     return _CarouselWithIndicatorState();

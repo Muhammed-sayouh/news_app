@@ -9,6 +9,8 @@ class HomeViewModel with ChangeNotifier {
   bool loaderEgyptNews = false;
   bool loaderBBCNews = false;
 
+
+// to fech bbc news form service
   Future<void> fetchEgyptNews() async {
     Future.delayed(Duration.zero).then((value) => notifyListeners());
     loaderEgyptNews = true;
@@ -22,6 +24,8 @@ class HomeViewModel with ChangeNotifier {
     }
   }
 
+
+// to fech bbc news form service
   Future<void> fetchBBCNews() async {
     Future.delayed(Duration.zero).then((value) => notifyListeners());
     loaderBBCNews = true;
