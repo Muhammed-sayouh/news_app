@@ -3,12 +3,14 @@ class Constants {
   static const String mainAssetImagesPath = 'assets/icons/';
   static const String spinnerLoader = '${mainAssetImagesPath}spinner.gif';
   static const String smallBlackLogo = '${mainAssetImagesPath}proken.png';
+  static const String somethingWrong = '${mainAssetImagesPath}somethingwrong.png';
 
   //Strings
 
   static String loading = "Loading ...";
   static String news = "News";
   static String latestNews = "Latest News";
+  static String refresh = "Refresh";
 
   //Base  url
 

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:news_app/model/news_model.dart';
 import 'package:news_app/services/news_services.dart';
@@ -9,6 +11,8 @@ class HomeViewModel with ChangeNotifier {
   bool loaderEgyptNews = false;
   bool loaderBBCNews = false;
 
+  bool errorEgyptNews = false;
+  bool errorBBCNews = false;
 
 // to fech bbc news form service
   Future<void> fetchEgyptNews() async {
@@ -20,10 +24,12 @@ class HomeViewModel with ChangeNotifier {
       loaderEgyptNews = false;
       notifyListeners();
     } catch (error) {
-      rethrow;
+      log("${error.toString()}errrrrrrrrrrrrrrrrror");
+      errorEgyptNews = true;
+      notifyListeners();
+     
     }
   }
-
 
 // to fech bbc news form service
   Future<void> fetchBBCNews() async {
@@ -34,7 +40,9 @@ class HomeViewModel with ChangeNotifier {
       loaderBBCNews = false;
       notifyListeners();
     } catch (error) {
-      rethrow;
+      errorEgyptNews = true;
+      notifyListeners();
+     
     }
   }
 }

@@ -30,7 +30,11 @@ class _CarouselWithIndicatorState extends State<ImageSlider> {
           items: widget.articles
               .map((item) => InkWell(
                     onTap: () => Navigators.getTo(
-                        context, NewsDetailsScreen(article: item)),
+                        context,
+                        NewsDetailsScreen(
+                          article: item,
+                          arabic: true,
+                        )),
                     child: Container(
                       margin: const EdgeInsets.all(5.0),
                       child: ClipRRect(

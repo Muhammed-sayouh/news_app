@@ -5,7 +5,6 @@ import 'package:news_app/helpers/constants.dart';
 
 import '../helpers/dio/dio.dart';
 import '../model/news_model.dart';
-import '../ui/custom_widgets/custome_toast.dart';
 
 Future<List<Article>> getNews({bool egyptNews = true}) async {
   try {
@@ -14,8 +13,7 @@ Future<List<Article>> getNews({bool egyptNews = true}) async {
     );
     return newsModelFromJson(response.data).articles;
   } catch (err) {
-    log(err.toString());
-    customToast("Check ");
-    return [];
+   rethrow;
+   
   }
 }
