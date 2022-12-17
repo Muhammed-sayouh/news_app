@@ -1,12 +1,14 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:news_app/helpers/navigators.dart';
 import 'package:news_app/model/news_model.dart';
 import 'package:news_app/ui/custom_widgets/custom_images.dart';
+import 'package:news_app/ui/screens/news_details/news_details.dart';
 import 'package:news_app/ui/theme/sizes/sizes.dart';
 import 'package:news_app/ui/theme/style/colors.dart';
 
 class ImageSlider extends StatefulWidget {
-/// EGYPT news in image slider , just pass list of [articles] 
+  /// EGYPT news in image slider , just pass list of [articles]
 
   final List<Article> articles;
   const ImageSlider({super.key, required this.articles});
@@ -26,43 +28,47 @@ class _CarouselWithIndicatorState extends State<ImageSlider> {
       Expanded(
         child: CarouselSlider(
           items: widget.articles
-              .map((item) => Container(
-                    margin: const EdgeInsets.all(5.0),
-                    child: ClipRRect(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(10.0)),
-                        child: Stack(
-                          children: <Widget>[
-                            SizedBox(
-                              width: width(context, 0.8),
-                              height: height(context, 0.26),
-                              child: CustomNetworkImage(
-                                  imagePath: item.urlToImage),
-                            ),
-                            Positioned(
-                              bottom: 0.0,
-                              left: 0.0,
-                              right: 0.0,
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 10.0, horizontal: 10.0),
-                                child: Text(
-                                  item.title.toString(),
-                                  textDirection: TextDirection.rtl,
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                  textAlign: TextAlign.start,
-                                  style: const TextStyle(
-                                    height: 1.2,
-                                    color: Colors.white,
-                                    fontSize: 13.0,
-                                    fontWeight: FontWeight.bold,
+              .map((item) => InkWell(
+                    onTap: () => Navigators.getTo(
+                        context, NewsDetailsScreen(article: item)),
+                    child: Container(
+                      margin: const EdgeInsets.all(5.0),
+                      child: ClipRRect(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10.0)),
+                          child: Stack(
+                            children: <Widget>[
+                              SizedBox(
+                                width: width(context, 0.8),
+                                height: height(context, 0.26),
+                                child: CustomNetworkImage(
+                                    imagePath: item.urlToImage),
+                              ),
+                              Positioned(
+                                bottom: 0.0,
+                                left: 0.0,
+                                right: 0.0,
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 10.0, horizontal: 10.0),
+                                  child: Text(
+                                    item.title.toString(),
+                                    textDirection: TextDirection.rtl,
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                    textAlign: TextAlign.start,
+                                    style: const TextStyle(
+                                      height: 1.2,
+                                      color: Colors.white,
+                                      fontSize: 13.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
-                        )),
+                            ],
+                          )),
+                    ),
                   ))
               .toList(),
           carouselController: _controller,
